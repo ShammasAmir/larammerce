@@ -36,9 +36,9 @@
         </div>
         @include('admin.templates.pagination', [
             "modelName" => "coupon",
-            "lastPage" => $colors->lastPage(),
-            "total" => $colors->total(),
-            "count" => $colors->perPage(),
+            "lastPage" => $coupons->lastPage(),
+            "total" => $coupons->total(),
+            "count" => $coupons->perPage(),
             "parentId" => $scope ?? null
         ])
     </div>
