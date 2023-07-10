@@ -147,6 +147,9 @@ Route::group(
         //DiscountCard
         Route::resource("discount-card", "DiscountCardController", ["as" => "admin"]);
 
+        //Coupon
+        Route::resource("coupon", "CouponController", ["as" => "admin"]);
+
         //CustomerUserLegalInfo
         Route::resource("customer-user-legal-info", "CustomerUserLegalInfoController", ["as" => "admin"]);
 
