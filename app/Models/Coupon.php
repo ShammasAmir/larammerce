@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use DateTime;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -8,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string title
  * @property integer customer_user_id
  * @property integer amount
- * @property Carbon used_at
- * @property Carbon expire_at
+ * @property DateTime used_at
+ * @property DateTime expire_at
  * @property Carbon created_at
  * @property Carbon updated_at
  * 
@@ -22,6 +23,19 @@ class Coupon extends BaseModel
 
     protected $fillable = [
         'title', 'customer_user_id', 'amount', 'used_at', 'expire_at'
+    ];
+
+    protected $casts = [
+        "used_at" => "datetime",
+        "expire_at" => "datetime"
+    ];
+
+    protected static array $SORTABLE_FIELDS = ['id', 'created_at', 'used_at', 'expire_at'];
+
+    protected static array $SEARCHABLE_FIELDS = [
+        'id',
+        'customer_user_id',
+        'title',
     ];
 
     public function customer(): belongsTo
