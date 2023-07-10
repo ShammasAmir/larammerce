@@ -236,7 +236,9 @@ return [
             'important_at' => 'تاریخ اعلام مهم بودن',
             'is_notified' => 'اطلاع رسانی شده است؟',
             'client_ip' => 'آی پی مشتری',
-            'request_counts' => 'تعداد درخواست'
+            'request_counts' => 'تعداد درخواست',
+            'used_at' => 'تاریخ استفاده',
+            'expire_at' => 'تاریخ انقضا',
         ],
     'methods' =>
         [
@@ -380,6 +382,7 @@ return [
             'product_package_item' => 'آیتم پکیج محصول',
             'robot_txt_record' => 'رکورد تنظیمات ربات جستجوگر',
             'short_link_statistic' => 'آمار لینک کوتاه',
+            'coupon' => 'کوپن ها',
         ],
     'actions' =>
         [
