@@ -45,6 +45,7 @@ class CouponController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
+        dd($request->all());
         $coupon = Coupon::create($request->all());
         return redirect()->route('admin.coupon.edit', $coupon);
     }
