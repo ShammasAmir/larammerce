@@ -226,75 +226,71 @@
                 <label for="is_discountable"></label>
             <input id="is_discountable_hidden" name="is_discountable" type="hidden" value="0"/>
             </span>
-        </div>
-        <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-            @roleinput($product, "max_purchase_count")>
-            <span class="label">حداکثر تعداد سفارش</span>
-            <input class="form-control input-sm" name="max_purchase_count"
-                   value="{{ $product->max_purchase_count }}">
-        </div>
-        <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-            @roleinput($product, "min_purchase_count")>
-            <span class="label">حداقل تعداد سفارش</span>
-            <input class="form-control input-sm" name="min_purchase_count"
-                   value="{{ $product->min_purchase_count }}">
-        </div>
-        <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-            @roleinput($product, "min_allowed_count")>
-            <span class="label">حد اقل موجودی مجاز</span>
-            <input class="form-control input-sm" name="min_allowed_count" value="{{ $product->min_allowed_count }}">
-        </div>
-        @if(should_use_per_product_tax_config())
-            <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-                @roleinput($product, "tax_percentage")>
-                <span class="label">درصد مالیات</span>
-                <input class="form-control input-sm" name="tax_percentage" value="{{ $product->tax_percentage }}">
-            </div>
-            <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-                @roleinput($product, "toll_percentage")>
-                <span class="label">درصد عوارض</span>
-                <input class="form-control input-sm" name="toll_percentage" value="{{ $product->toll_percentage }}">
-            </div>
-            <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-                 style="margin-bottom: 40px;" @roleinput($product, "is_tax_included")>
-                <span class="material-switch pull-right">آیا مالیات در قیمت محصول لحاظ شده است؟ &nbsp
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         @roleinput($product, "max_purchase_count")>
+    <span class="label">حداکثر تعداد سفارش</span>
+    <input class="form-control input-sm" name="max_purchase_count" value="{{ $product->max_purchase_count }}">
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         @roleinput($product, "min_purchase_count")>
+    <span class="label">حداقل تعداد سفارش</span>
+    <input class="form-control input-sm" name="min_purchase_count" value="{{ $product->min_purchase_count }}">
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         @roleinput($product, "min_allowed_count")>
+    <span class="label">حد اقل موجودی مجاز</span>
+    <input class="form-control input-sm" name="min_allowed_count" value="{{ $product->min_allowed_count }}">
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         @roleinput($product, "tax_percentage")>
+    <span class="label">درصد مالیات</span>
+    <input class="form-control input-sm" name="tax_percentage" value="{{ $product->tax_percentage }}">
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         @roleinput($product, "toll_percentage")>
+    <span class="label">درصد عوارض</span>
+    <input class="form-control input-sm" name="toll_percentage" value="{{ $product->toll_percentage }}">
+    </div>
+    <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+         style="margin-bottom: 40px;" @roleinput($product, "is_tax_included")>
+    <span class="material-switch pull-right">آیا مالیات در قیمت محصول لحاظ شده است؟ &nbsp
                 <input id="is_tax_included" name="is_tax_included" type="checkbox" value="1"
                        @if($product->is_tax_included) checked @endif/>
                 <label for="is_tax_included"></label>
             <input id="is_tax_included_hidden" name="is_tax_included" type="hidden" value="0"/>
             </span>
-            </div>
-        @endif
-        @if(is_manual_stock())
-            <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
-                @roleinput($product, "count")>
-                <span class="label">تعداد موجود</span>
-                <input class="form-control input-sm" @if($product->is_package) disabled @endif
-                name="count" value="{{ $product->count }}">
-            </div>
-            <div class="input-group col-lg-12 col-sm-12 col-md-12 col-xs-12 no-padding"
-                @roleinput($product, "latest_price")>
-                <div
-                    class="input-group with-icon with-unit group-sm col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-right">
-                    <span class="label">آخرین قیمت</span>
-                    <i class="fa fa-dollar"></i>
-                    <input class="form-control input-sm"
-                           name="latest_price" value="{{ $product->latest_price }}"
-                           act="price">
-                    <span class="unit">تومان</span>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 actions pull-right">
-                    <a class="btn btn-sm btn-primary pull-left"
-                       href="{{route('admin.product-price.index')}}?product_id={{ $product->id }}">
-                        <i class="fa fa-line-chart"></i>
-                    </a>
-                    <a class="btn btn-sm btn-success pull-left"
-                       href="{{route('admin.product-price.create')}}?product_id={{ $product->id }}">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-        @endif
+    </div>
+    @if(is_manual_stock())
+        <div class="input-group group-sm col-lg-12 col-sm-12 col-md-12 col-xs-12"
+             @roleinput($product, "count")>
+        <span class="label">تعداد موجود</span>
+        <input class="form-control input-sm" @if($product->is_package) disabled @endif
+        name="count" value="{{ $product->count }}">
+        </div>
+        <div class="input-group col-lg-12 col-sm-12 col-md-12 col-xs-12 no-padding"
+             @roleinput($product, "latest_price")>
+        <div
+            class="input-group with-icon with-unit group-sm col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-right">
+            <span class="label">آخرین قیمت</span>
+            <i class="fa fa-dollar"></i>
+            <input class="form-control input-sm"
+                   name="latest_price" value="{{ $product->latest_price }}"
+                   act="price">
+            <span class="unit">تومان</span>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 actions pull-right">
+            <a class="btn btn-sm btn-primary pull-left"
+               href="{{route('admin.product-price.index')}}?product_id={{ $product->id }}">
+                <i class="fa fa-line-chart"></i>
+            </a>
+            <a class="btn btn-sm btn-success pull-left"
+               href="{{route('admin.product-price.create')}}?product_id={{ $product->id }}">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        </div>
+    @endif
 
         <div class="input-group col-lg-12 col-sm-12 col-md-12 col-xs-12 no-padding"
             @roleinput($product, "latest_special_price")>

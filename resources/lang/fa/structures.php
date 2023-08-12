@@ -239,10 +239,7 @@ return [
             'request_counts' => 'تعداد درخواست',
             "is_tax_included" => "آیا مالیات در قیمت محصول لحاظ شده است؟",
             "tax_percentage" => "درصد مالیات",
-            "toll_percentage" => "درصد عوارض",
-            'depth' => 'عمق',
-            'is_hidden' => 'مخفی بودن',
-            'metadata' => 'اطلاعات و داده های مازاد',
+            "toll_percentage" => "درصد عوارض"
         ],
     'methods' =>
         [
