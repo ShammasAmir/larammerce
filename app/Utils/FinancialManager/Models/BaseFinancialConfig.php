@@ -53,8 +53,11 @@ abstract class BaseFinancialConfig extends BaseModel implements JsonSerializable
     public bool $use_per_product_config;
 
 
-    public function __construct()
-    {
+    public function __construct() {
+        $this->init();
+    }
+
+    private function init() {
         $this->is_enabled = false;
         $this->is_manual_stock = false;
         $this->check_exit_tab_sms_notification = true;
