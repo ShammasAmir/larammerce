@@ -231,29 +231,6 @@ class Product extends BaseModel implements
     private CMSSettingHelper $cms_setting_helper;
     private NewInvoiceService $new_invoice_service;
 
-    public function getTaxPercentageAttribute() {
-        $this->new_invoice_service = $this->new_invoice_service ?? app(NewInvoiceService::class);
-        $tax_percentage = $this->attributes["tax_percentage"] ?? 0;
-        if ($tax_percentage > 0) {
-            return $tax_percentage;
-        }
-        return $this->new_invoice_service->getProductTaxPercentage();
-    }
-
-    public function getTollPercentageAttribute() {
-        $this->new_invoice_service = $this->new_invoice_service ?? app(NewInvoiceService::class);
-        $toll_percentage = $this->attributes["toll_percentage"] ?? 0;
-        if ($toll_percentage > 0) {
-            return $toll_percentage;
-        }
-        return $this->new_invoice_service->getProductTollPercentage();
-    }
-
-    public function getIsTaxIncludedAttribute() {
-        $this->new_invoice_service = $this->new_invoice_service ?? app(NewInvoiceService::class);
-        return $this->attributes["is_tax_included"] ?? ConfigProvider::isTaxAddedToPrice();
-    }
-
     public function getIsLocationLimitedAttribute(): bool {
         if (config("cms.general.site.enable_directory_location")) {
             return DirectoryLocationService::isProductLocationLimited($this);
